@@ -65,23 +65,32 @@ public class ResultTest {
         assertThrows(GradeOutOfRange.class, () -> Result.gradingStudents(List.of(4, 50, -1, 38, 33)));
     }
 
-    @DisplayName("6. Expected array length - 1 of actual array")
+    @DisplayName("6. Actual grade list must match first entry in list")
     @Test
     public void testGradingStudents_comparationOfArrays() {
-
+        assertThrows(SizeMismatchException.class, () -> Result.gradingStudents(List.of(4, 150, 67, 38)));
     }
 
-    @DisplayName("7. Elements in coorect range")
+    @DisplayName("7. Check difference of 2 while subtracting")
     @Test
-    public void testGradingStudents_rangeCheck() {
+    public void testGradingStudents_checkDifferenceOfTwoWhileSubtracting() {
+        List<Integer> input = List.of(4, 73, 67, 38, 33);
+        List<Integer> expected = List.of(75, 67, 40, 33);
 
-
+        List<Integer> output = Result.gradingStudents(input);
+        assertEquals(expected, output);
+        assertEquals(2, output.get(0) - input.get(1));
     }
 
-    @DisplayName("8. Match of number of Students and grade elements")
+    @DisplayName("8. Check difference of 1 while subtracting")
     @Test
-    public void testGradingStudents_matchOfStudentsAndGrades() {
+    public void testGradingStudents_checkDifferenceOfOneWhileSubtracting() {
+        List<Integer> input = List.of(4, 74, 67, 38, 33);
+        List<Integer> expected = List.of(75, 67, 40, 33);
 
+        List<Integer> output = Result.gradingStudents(input);
+        assertEquals(expected, output);
+        assertEquals(1, output.get(0) - input.get(1));
     }
 
     @DisplayName("9. Check when 0 grades were passed in")

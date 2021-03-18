@@ -24,13 +24,12 @@ public class Result {
         List<Integer> sortedGrades=new ArrayList<Integer>();
 
         int students = grades.get(0);
-        List<Integer> actualGrades = grades.subList(1, students+1);
-        if(actualGrades.size() != students) {
+        if(students != grades.size() -1) {
             throw new SizeMismatchException("First parameter doesn't match length of grades");
         }
         if(students>=1 && students<=60)
         {
-            for(int grade : actualGrades)    //anstatt students+1 --> grades.size()) würde auch gehen
+            for(int grade : grades.subList(1, students+1))    //anstatt students+1 --> grades.size()) würde auch gehen
             {
                 if(grade>=0 && grade<=100)
                 {
