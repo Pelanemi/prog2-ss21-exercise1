@@ -93,46 +93,18 @@ public class ResultTest {
         assertEquals(1, output.get(0) - input.get(1));
     }
 
-    @DisplayName("9. Check when 0 grades were passed in")
+    @DisplayName("9. Check if expected list has values of multiple 5")
     @Test
     public void testGradingStudents_zeroCheck() {
+        List<Integer> input = List.of(4, 74, 68, 38, 30);
+        List<Integer> expected = List.of(75, 70, 40, 30);
 
+        List<Integer> output = Result.gradingStudents(input);
+        assertEquals(expected, output);
+        for(Integer grade : output) {
+            assertEquals(0, grade % 5);
+        }
     }
-
-    @DisplayName("10. Check when negative grades were passed in")
-    @Test
-    public void testGradingStudents_negativeCheck() {
-
-    }
-
-    /*
-
-    FOLGENDES NOCH IMPLEMENTIEREN !!!
-
-    Wenn students n < 1 und oder > 60
-            --> wirf eine exception aus
-
-    Wenn ein grade < 0 oder >100
-            --> wirf eine exception aus
-
-    2,3 Tests mit Beispielen
-
-    Anzahl des returnten Arrays soll gleich
-    um 1 weniger sein als des übergebenen.
-
-    sind alle Elemente in dem Array in der
-    geforderten range
-
-    stimmt die erste Stelle des Arrays
-    mit der Anzahl der Noten überein
-
-    gegen 0 prüfen
-
-    gegen - prüfen
-    */
-
-    //wird der erster Eintrag korrekt ignoriert?
-
 
 
 }
