@@ -38,7 +38,7 @@ public class ResultTest {
     public void testGradingStudents_sizeOfFirstParameterTooHigh() {
         //Hier triggert im Code folgende Exception
         //System.out.println("Students " + students + " out of range 1...60");
-        assertThrows(StudentsOutOfRange.class, () -> Result.gradingStudents(List.of(65, 73, 67, 38, 33)));    //2.Parameter: Funktion, deswegen Lambda, und gibt die Funktion zurück
+        assertThrows(StudentsOutOfRange.class, () -> Result.gradingStudents(List.of(65)));    //2.Parameter: Funktion, deswegen Lambda, und gibt die Funktion zurück
     }
 
     @DisplayName("3. Size of first parameter too low")
@@ -46,7 +46,7 @@ public class ResultTest {
     public void testGradingStudents_sizeOfFirstParameterTooLow() {
         //Hier triggert im Code folgende Exception
         //System.out.println("Students " + students + " out of range 1...60");
-        assertThrows(StudentsOutOfRange.class, () -> Result.gradingStudents(List.of(0, 73, 67, 38, 33)));
+        assertThrows(StudentsOutOfRange.class, () -> Result.gradingStudents(List.of(0)));   //Weil ich 0 Noten hab und es direkt fehlschlägt
     }
 
     @DisplayName("4. One grade of list to high")
@@ -54,7 +54,7 @@ public class ResultTest {
     public void testGradingStudents_oneGradeOfListToHigh() {
         //Hier triggert im Code folgende Exception
         //System.out.println("Grade " + grade + " out of range 0..100");
-
+        assertThrows(GradeOutOfRange.class, () -> Result.gradingStudents(List.of(4, 150, 67, 38, 33)));
     }
 
     @DisplayName("5. One grade of list to low")
@@ -62,6 +62,7 @@ public class ResultTest {
     public void testGradingStudents_oneGradeOfListToLow() {
         //Hier triggert im Code folgende Exception
         //System.out.println("Grade " + grade + " out of range 0..100");
+        assertThrows(GradeOutOfRange.class, () -> Result.gradingStudents(List.of(4, 50, -1, 38, 33)));
     }
 
     @DisplayName("6. Expected array length - 1 of actual array")
